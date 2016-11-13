@@ -14,14 +14,14 @@ class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event.target.value)
-    this.setState({term: event.target.value});
+    this.setState({ term: event.target.value });
   }
 
   onFormSubmit(event) {
     event.preventDefault();
     // fetch weather data
     this.props.fetchWeather(this.state.term);
+    // clears out search term so component re-renders
     this.setState({ term: '' });
   }
 
@@ -42,7 +42,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchWeather}, dispatch);
+  return bindActionCreators({ fetchWeather }, dispatch);
 }
 
 // Need null to ensure mapDispatchToProps is 2nd argument
